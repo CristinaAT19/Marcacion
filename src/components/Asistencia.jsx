@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import Swal from "sweetalert2";
-import '../css/cover.css';
+import "../css/cover.css";
 const Asistencia = () => {
   const enviarDatos = (e) => {
     e.preventDefault();
@@ -11,27 +11,26 @@ const Asistencia = () => {
     const usertime = new Date();
     const useragent = navigator.userAgent;
     const plataform = navigator.platform;
-    
-    
+
     axios
       .post(apiMarcar, {
-        dni:dni.value,
-        plataforma:plataform,
-        useragent:useragent,
-        usertime:usertime,
+        dni: dni.value,
+        plataforma: plataform,
+        useragent: useragent,
+        usertime: usertime,
       })
       .then((Response) => {
-          Swal.fire({
-              title:Response.data.mensaje,
-          })
-        // console.log(Response.data.mensaje);
+        Swal.fire({
+          title: Response.data.mensaje,
+          icon:"info",
+        });
+        
       })
       .catch((e) => {
         Swal.fire({
-            title:"DNI  incorrecto",
-            icon:"error"
-
-        })
+          title: "El DNI deve tener 8 caracteres",
+          icon: "error",
+        });
       });
   };
 
