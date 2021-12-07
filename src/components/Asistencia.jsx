@@ -7,7 +7,7 @@ const Asistencia = () => {
     e.preventDefault();
     const dni = document.getElementById("inputPassword2");
     const apiMarcar =
-      "https://desarrollo.consigueventas.com/asistenciaback/public/api/marcar";
+      "https://desarrollo.consigueventas.com/Backend/public/api/marcar";
     const usertime = new Date();
     const useragent = navigator.userAgent;
     const plataform = navigator.platform;
