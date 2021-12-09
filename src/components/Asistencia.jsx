@@ -28,7 +28,7 @@ const Asistencia = () => {
       })
       .catch((e) => {
         Swal.fire({
-          title: "El DNI deve tener 8 caracteres",
+          title: "El DNI debe tener 8 caracteres",
           icon: "error",
         });
       });
