@@ -42,13 +42,13 @@ const Asistencia2 = () => {
       src="https://desarrollo.consigueventas.com/Frontend/Recursos/logoCompleto.png"/>
       </div>
 
-     <div className="bg-gradient-to-r from-yellow-700 to-yellow-300 h-full contanier ">
+     <div className="bg-gradient-to-r from-yellow-700 to-yellow-300 h-screen contanier">
     <div className="   m-auto  grid grid-cols-1 xl:grid-cols-2   container mx-auto   ">
         
-        <div className=" mt-1 py-12 px-6 sm:p-20 xl:w-auto  text-xl w-full max-w-screen-xl mx-auto px-4 ">
+        <div className=" mt-1 py-12 px-6 sm:p-20 xl:w-auto text-base  sm:text-xl w-full max-w-screen-xl mx-auto px-4 ">
               <div className="px-0 text-justify font-medium ">
-                  <h1 className="text-center text-4xl  font-serif  "> ASISTENCIA </h1>
-                  <h1 className="text-center text-4xl  font-serif ">  CONSIGUE VENTAS</h1><br/>
+                  <h1 className="text-center text-xl sm:text-4xl  font-serif  "> ASISTENCIA </h1>
+                  <h1 className="text-center text-xl sm:text-4xl   font-serif ">  CONSIGUE VENTAS</h1><br/>
                   <h2 className="">Reglas:</h2>
                   <li id="one" >
                     Tolerancia 10 min
