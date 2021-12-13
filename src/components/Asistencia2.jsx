@@ -3,6 +3,11 @@ import React from "react";
 import Swal from "sweetalert2";
 import "../css/cover.css";
 const Asistencia2 = () => {
+  const validationOnlyNumbers = (value) => {
+    let regExp = /^[0-9]+$/;
+    return regExp.test(value);
+}
+
   const enviarDatos = (e) => {
     e.preventDefault();
     const dni = document.getElementById("inputPassword2");
@@ -11,6 +16,14 @@ const Asistencia2 = () => {
     const usertime = new Date();
     const useragent = navigator.userAgent;
     const plataform = navigator.platform;
+    let paso = validationOnlyNumbers(dni.value);
+    if(paso == false){
+      Swal.fire({
+        title: "El DNI debe ser solo numeros",
+        icon: "error",
+      });
+      return ;
+    };
 
     axios
       .post(apiMarcar, {
@@ -27,8 +40,18 @@ const Asistencia2 = () => {
 
       })
       .catch((e) => {
+        const punto = ".";
+        let errores = e.response.data.errors
+        // errores = errores.split(punto)
+        errores = JSON.stringify(errores['dni'],null,2);
+        // console.log(errores);
+        errores = errores.replace(/[\[\]']+/g, "");
+        errores = errores.replace(/[\{\}]+/g, "");
+        errores = errores.replace(/[\,]+/g, "<br>");
+        errores = errores.replace(/[\:]+/g, "");
+        errores = errores.replace(/[\n]+/g, "");
         Swal.fire({
-          title: "El DNI debe tener 8 caracteres",
+          title: errores,
           icon: "error",
         });
       });
@@ -36,39 +59,61 @@ const Asistencia2 = () => {
 
   return (
     <>
-      <section className="bg-gradient-to-r from-yellow-300 to-yellow-700 h-screen">
-        <header className=" border p-4 flex justify-start bg-white">
-          logo
-        </header>
-        <main>
+      <section className=" h-screen">
+        <div className="flex justify-center items-center  bg-gray-100 m-auto py-6  h-32">
+          <img className=" mb-2"
+            src="https://desarrollo.consigueventas.com/Frontend/Recursos/logoCompleto.png" />
+        </div>
 
-          <div className="w-full min-h-screen bg-gray-100 flex justify-center items-center">
-            <div className="w-3/5 bg-blue-100 rounded-lg shadow-sm p-5 border-dashed border border-blue-500 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
-              <div className="flex flex-col sm:flex-row justify-start items-center gap-4">
-                <div className="bg-blue-200 flex p-2 rounded-md">
-                  <svg xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                </div>
-                <div className="text-center sm:text-left">
-                  <h1 className="text-gray-700 font-bold tracking-wider">Secure Your Account</h1>
-                  <p className="text-gray-500 font-semibold">Two-factor authentication adds an extra layer of security to
-                    your account. To log in, in addition you'll need to provide a 6 digit code</p>
-                </div>
-              </div>
-              <div>
-                <button className="bg-blue-500 py-2 px-4 text-white font-bold rounded-md hover:bg-blue-600">Enable</button>
-              </div>
+        <div className="bg-gradient-to-r from-yellow-700 to-yellow-300 h-full contanier ">
+          <div className="   m-auto  grid grid-cols-1 xl:grid-cols-2   container mx-auto   ">
 
+            <div className=" mt-1 py-12 px-6 sm:p-20 xl:w-auto  text-xl w-full max-w-screen-xl mx-auto px-4 ">
+              <div className="px-0 text-justify font-medium ">
+                <h1 className="text-center text-4xl  font-serif  "> ASISTENCIA </h1>
+                <h1 className="text-center text-4xl  font-serif ">  CONSIGUE VENTAS</h1><br />
+                <h2 className="">Reglas:</h2>
+                <li id="one" >
+                  Tolerancia 10 min
+                </li>
+                <li id="one">
+                  3 Tardanzas = 1 día de inasistencia
+                </li>
+                <li id="one" >
+                  1 día de inasistencia = Un día más a la fecha final del periodo de práctica
+                </li>
+              </div>
             </div>
+            <div className=" flex justify-center w-full max-w-screen-xl mx-auto px-4 ">
+              <div className=" mt-auto mb-auto p-4 bg-white shadow-2xl rounded-lg ">
+                <p className="font-medium  text-sm sm:text-xl text-gray-900 ">Bienvenido</p>
+
+                <div className="">
+                  <label className=" space-y-1 md:space-y-6 py-2 ">
+                    <input
+                      type="number"
+                      id="inputPassword2"
+                      placeholder="Ingrese su DNI para la asistencia"
+                      className="w-full py-3 sm:py-2 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-800 bg-gray-50  focus:outline-none  
+                                text-gray-900 "
+                    />
+                    <button class="flex-shrink-0 bg-gray-500 text-white text-base font-semibold py-2   sm:px-2 rounded-lg shadow-md hover:bg-gray-700 
+                    w-full"
+                      type="button"
+                      onClick={enviarDatos}>
+                      Marcar
+                    </button>
+
+                  </label>
+                </div>
+
+              </div>
+            </div>
+
           </div>
-
-        </main>
-
+        </div>
       </section>
+
     </>
   );
 };
