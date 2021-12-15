@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import Swal from "sweetalert2";
-import "../css/cover.css";
+// import "../css/cover.css";
 const Asistencia2 = () => {
   const enviarDatos = (e) => {
     e.preventDefault();
@@ -36,61 +36,38 @@ const Asistencia2 = () => {
 
   return (
     <> 
-    <section className=" h-screen">
-    <div className="flex justify-center items-center  bg-gray-100 m-auto py-6  h-32">
-      <img className=" mb-2"
-      src="https://desarrollo.consigueventas.com/Frontend/Recursos/logoCompleto.png"/>
-      </div>
-
-     <div className="bg-gradient-to-r from-yellow-700 to-yellow-300 h-screen contanier">
-    <div className="   m-auto  grid grid-cols-1 xl:grid-cols-2   container mx-auto   ">
-        
-        <div className=" mt-1 py-12 px-6 sm:p-20 xl:w-auto text-base  sm:text-xl w-full max-w-screen-xl mx-auto px-4 ">
-              <div className="px-0 text-justify font-medium ">
-                  <h1 className="text-center text-xl sm:text-4xl  font-serif  "> ASISTENCIA </h1>
-                  <h1 className="text-center text-xl sm:text-4xl   font-serif ">  CONSIGUE VENTAS</h1><br/>
-                  <h2 className="">Reglas:</h2>
-                  <li id="one" >
-                    Tolerancia 10 min
-                  </li>
-                  <li id="one">
-                    3 Tardanzas = 1 día de inasistencia
-                  </li>
-                  <li id="one" >
-                    1 día de inasistencia = Un día más a la fecha final del periodo de práctica
-                  </li>
-                </div>
+      {/* Container */}
+      <div className="h-screen bg-gradient-to-r from-yellow-700 to-yellow-300">
+        {/* Header */}
+        <div className="flex justify-center items-center bg-gray-100 py-1 border-b border-gray-400 shadow-lg">
+          <img className="h-16" src="https://desarrollo.consigueventas.com/Frontend/Recursos/logoCompleto.png"/>
         </div>
-        <div className=" flex justify-center w-full max-w-screen-xl mx-auto px-4 ">
-          <div  className=" mt-auto mb-auto p-4 bg-white shadow-2xl rounded-lg ">
-                    <p className="font-medium  text-sm sm:text-xl text-gray-900 ">Bienvenido</p>
-                    
-                    <div className="">
-                <label  className=" space-y-1 md:space-y-6 py-2 ">
-                        <input 
-                                type="number" 
-                                id="inputPassword2"
-                                placeholder="Ingrese su DNI para la asistencia"
-                                className="w-full py-3 sm:py-2 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-800 bg-gray-50  focus:outline-none  
-                                text-gray-900 "
-                        />
-                    <button class="flex-shrink-0 bg-gray-500 text-white text-base font-semibold py-2   sm:px-2 rounded-lg shadow-md hover:bg-gray-700 
-                    w-full"
-                     type="button"
-                      onClick={enviarDatos}>
-                                 Marcar
-                              </button>
-                    
-                </label>
-                </div>
-              
-                </div>
-         </div>
-        
-    </div>
-    </div>
-    </section>   
-      
+        {/* Contenido de las dos grillas */}
+        <div className="mx-auto grid grid-cols-1 lg:grid-cols-12 flex justify-center content-center h-5/6">
+          {/* Contenido de las reglas */}
+          <div className="flex col-span-6 p-4 text-white justify-center">
+            <div className="p-4 text-justify font-medium">
+              <h1 className="text-center pb-2 text-2xl md:text-3xl">Reglas</h1>
+              <h3 className="text-lg md:pl-7" >Tolerancia 10 min</h3>
+              <h3 className="text-lg md:pl-7">3 Tardanzas = 1 día de inasistencia</h3>
+              <h3 className="text-lg md:pl-7">1 día de inasistencia = Un día más a la fecha final del periodo de práctica</h3>
+            </div>
+          </div>
+          {/* Contenido del formulario */}
+          <div className="flex col-span-6 p-4 justify-center">
+            <div className=" p-4 bg-white shadow-2xl rounded-lg">
+              <p className="font-medium text-sm sm:text-xl text-gray-900">Bienvenido</p>
+              <div>
+                <input type="number" id="inputPassword2" placeholder="Ingrese su DNI para la asistencia" className="w-full my-5 py-3 sm:py-2 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-800 bg-gray-50 focus:outline-none text-gray-900"/>
+                <button class="flex-shrink-0 bg-gray-500 text-white text-base font-semibold py-2 sm:px-2 rounded-lg shadow-md hover:bg-gray-700 w-full"  type="button" onClick={enviarDatos}>Marcar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer className="text-xs text-white absolute bottom-0  left-0 right-0 py-1 md:py-2 border-t border-zinc-900">
+          CONSIGUE VENTAS © 2021
+        </footer>
+      </div>
     </>
   );
 };
