@@ -3,6 +3,11 @@ import React from "react";
 import Swal from "sweetalert2";
 // import "../css/cover.css";
 const Asistencia2 = () => {
+  const validationOnlyNumbers = (value) => {
+    let regExp = /^[0-9]+$/;
+    return regExp.test(value);
+}
+
   const enviarDatos = (e) => {
     e.preventDefault();
     const dni = document.getElementById("inputPassword2");
@@ -11,6 +16,14 @@ const Asistencia2 = () => {
     const usertime = new Date();
     const useragent = navigator.userAgent;
     const plataform = navigator.platform;
+    let paso = validationOnlyNumbers(dni.value);
+    if(paso == false){
+      Swal.fire({
+        title: "El DNI debe ser solo numeros",
+        icon: "error",
+      });
+      return ;
+    };
 
     axios
       .post(apiMarcar, {
@@ -22,13 +35,23 @@ const Asistencia2 = () => {
       .then((Response) => {
         Swal.fire({
           title: Response.data.mensaje,
-          icon:"info",
+          icon: "info",
         });
-        
+
       })
       .catch((e) => {
+        const punto = ".";
+        let errores = e.response.data.errors
+        // errores = errores.split(punto)
+        errores = JSON.stringify(errores['dni'],null,2);
+        // console.log(errores);
+        errores = errores.replace(/[\[\]']+/g, "");
+        errores = errores.replace(/[\{\}]+/g, "");
+        errores = errores.replace(/[\,]+/g, "<br>");
+        errores = errores.replace(/[\:]+/g, "");
+        errores = errores.replace(/[\n]+/g, "");
         Swal.fire({
-          title: "El DNI debe tener 8 caracteres",
+          title: errores,
           icon: "error",
         });
       });
