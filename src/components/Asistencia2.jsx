@@ -66,7 +66,7 @@ const Asistencia2 = () => {
           <img className="h-16" src="https://desarrollo.consigueventas.com/Frontend/Recursos/logoCompleto.png"/>
         </div>
         {/* Contenido de las dos grillas */}
-        <div className="mx-auto grid grid-cols-1 lg:grid-cols-12 flex justify-center content-center h-5/6">
+        <div className="mx-auto grid grid-cols-1 xl:grid-cols-12 flex justify-center content-center h-5/6">
           {/* Contenido de las reglas */}
           <div className="flex col-span-6 p-4 text-white justify-center">
             <div className="p-4 text-justify font-medium">
@@ -87,9 +87,6 @@ const Asistencia2 = () => {
             </div>
           </div>
         </div>
-        <footer className="text-xs text-white absolute bottom-0  left-0 right-0 py-1 md:py-2 border-t border-zinc-900">
-          CONSIGUE VENTAS © 2021
-        </footer>
       </div>
     </>
   );
