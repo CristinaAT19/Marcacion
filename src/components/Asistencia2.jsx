@@ -7,6 +7,14 @@ const Asistencia2 = () => {
     let regExp = /^[0-9]+$/;
     return regExp.test(value);
 }
+  const validationQuantity = (value) => {
+    if(value.length === 8){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
 
   const enviarDatos = (e) => {
     e.preventDefault();
@@ -17,6 +25,7 @@ const Asistencia2 = () => {
     const useragent = navigator.userAgent;
     const plataform = navigator.platform;
     let paso = validationOnlyNumbers(dni.value);
+    let quantityNumbers = validationQuantity(dni.value);
     if(paso == false){
       Swal.fire({
         title: "El DNI debe ser solo numeros",
@@ -24,7 +33,13 @@ const Asistencia2 = () => {
       });
       return ;
     };
-
+    if(quantityNumbers == false){
+      Swal.fire({
+        title: "Deben ser 8 numeros",
+        icon: "error",
+      });
+      return ;
+    }
     axios
       .post(apiMarcar, {
         dni: dni.value,
