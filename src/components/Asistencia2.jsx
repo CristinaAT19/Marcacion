@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useRef } from "react";
 import Swal from "sweetalert2";
 // import "../css/cover.css";
 const Asistencia2 = () => {
@@ -71,6 +71,15 @@ const Asistencia2 = () => {
         });
       });
   };
+  useRef([
+
+  ]);
+  const campo = useRef();
+  const onInputDni = () => {
+    if (campo.current.value.length > 8) {
+      campo.current.value = campo.current.value.slice(0, 8);
+    }
+  };
 
   return (
     <> 
@@ -96,7 +105,7 @@ const Asistencia2 = () => {
             <div className=" p-4 bg-white shadow-2xl rounded-lg">
               <p className="font-medium text-sm sm:text-xl text-gray-900">Bienvenido</p>
               <div>
-                <input type="number" id="inputPassword2" placeholder="Ingrese su DNI para la asistencia" className="w-full my-5 py-3 sm:py-2 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-800 bg-gray-50 focus:outline-none text-gray-900"/>
+                <input ref={campo} onInput={onInputDni} type="number" id="inputPassword2" placeholder="Ingrese su DNI para la asistencia" className="w-full my-5 py-3 sm:py-2 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-800 bg-gray-50 focus:outline-none text-gray-900"/>
                 <button class="flex-shrink-0 bg-gray-500 text-white text-base font-semibold py-2 sm:px-2 rounded-lg shadow-md hover:bg-gray-700 w-full"  type="button" onClick={enviarDatos}>Marcar</button>
               </div>
             </div>
