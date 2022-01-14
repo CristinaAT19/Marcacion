@@ -20,7 +20,7 @@ const Asistencia2 = () => {
     e.preventDefault();
     const dni = document.getElementById("inputPassword2");
     const apiMarcar =
-      "https://desarrollo.consigueventas.com/Backend/public/api/marcar";
+      "https://erp.consigueventas.com/backend/public/marcar";
     const usertime = new Date();
     const useragent = navigator.userAgent;
     const plataform = navigator.platform;
