@@ -86,24 +86,34 @@ const Asistencia2 = () => {
       {/* Container */}
       <div className="h-screen bg-gradient-to-r from-yellow-700 to-yellow-300">
         {/* Header */}
-        <div className="flex justify-center items-center bg-gray-100 py-1 border-b border-gray-400 shadow-lg">
-          <img className="h-16" src="https://desarrollo.consigueventas.com/Frontend/Recursos/logoCompleto.png"/>
+        <div className="flex justify-between bg-gray-100 py-1 border-b border-gray-400 shadow-lg">
+          <img className="h-16 mx-4" src="https://desarrollo.consigueventas.com/Frontend/Recursos/logoCompleto.png"/>
+          <button
+              type="submit" 
+              onClick={()=>{
+
+                window.location.replace("https://erp.consigueventas.com/sistema/asistencia/#/login");
+              }}  
+              className="cursor-pointer py-2 px-6 block duration-75 text-gray-900  text-md md:text-xl font-bold w-52 text-center rounded">
+              Inicio de sesión
+            </button>
         </div>
         {/* Contenido de las dos grillas */}
         <div className="mx-auto grid grid-cols-1 xl:grid-cols-12 flex justify-center content-center h-5/6">
           {/* Contenido de las reglas */}
           <div className="flex col-span-6 p-4 text-white justify-center">
             <div className="p-4 text-justify font-medium">
-              <h1 className="text-center pb-2 text-2xl md:text-3xl">Reglas</h1>
-              <h3 className="text-lg md:pl-7" >Tolerancia 10 min</h3>
-              <h3 className="text-lg md:pl-7">3 Tardanzas = 1 día de inasistencia</h3>
-              <h3 className="text-lg md:pl-7">1 día de inasistencia = Un día más a la fecha final del periodo de práctica</h3>
+              <h1 className="text-center pb-2 text-2xl md:text-4xl ">Reglas</h1>
+              <h3 className="text-lg md:pl-7 md:text-3xl" >Tolerancia 10 min</h3>
+              <h3 className="text-lg md:pl-7 md:text-3xl">3 Tardanzas = 1 día de inasistencia</h3>
+              <h3 className="text-lg md:pl-7 md:text-3xl">1 día de inasistencia = Un día más a la fecha final del periodo de práctica</h3>
             </div>
           </div>
+
           {/* Contenido del formulario */}
-          <div className="flex col-span-6 p-4 justify-center">
-            <div className=" p-4 bg-white shadow-2xl rounded-lg">
-              <p className="font-medium text-sm sm:text-xl text-gray-900">Bienvenido</p>
+          <div className="flex col-span-6 p-4 justify-center ">
+            <div className=" p-4 md:p-10 bg-white shadow-2xl rounded-lg">
+              <p className="font-medium text-sm sm:text-xl text-gray-900 text-center">Bienvenido</p>
               <div>
                 <input ref={campo} onInput={onInputDni} type="number" id="inputPassword2" placeholder="Ingrese su DNI para la asistencia" className="w-full my-5 py-3 sm:py-2 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-800 bg-gray-50 focus:outline-none text-gray-900"/>
                 <button class="flex-shrink-0 bg-gray-500 text-white text-base font-semibold py-2 sm:px-2 rounded-lg shadow-md hover:bg-gray-700 w-full"  type="button" onClick={enviarDatos}>Marcar</button>
@@ -115,5 +125,6 @@ const Asistencia2 = () => {
     </>
   );
 };
+
 
 export default Asistencia2;
