@@ -92,7 +92,7 @@ const Asistencia2 = () => {
               type="submit" 
               onClick={()=>{
 
-                window.location.replace("https://erp.consigueventas.com/sistema/asistencia/#/login");
+                window.location.replace("https://erp.consigueventas.com/asistencia/#/login");
               }}  
               className="cursor-pointer py-2 px-6 block duration-75 text-gray-900  text-md md:text-xl font-bold w-52 text-center rounded">
               Inicio de sesión
