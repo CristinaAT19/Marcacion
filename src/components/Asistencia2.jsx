@@ -87,7 +87,7 @@ const Asistencia2 = () => {
       <div className="h-screen bg-gradient-to-r from-yellow-700 to-yellow-300">
         {/* Header */}
         <div className="flex justify-between bg-gray-100 py-1 border-b border-gray-400 shadow-lg">
-          <img className="h-16 mx-4" src="https://desarrollo.consigueventas.com/Frontend/Recursos/logoCompleto.png"/>
+          <img className="h-16 mx-4" src="https://desarrollo.consigueventas.com/Frontend/Recursos/Logo.svg"/>
           <button
               type="submit" 
               onClick={()=>{
